@@ -114,6 +114,30 @@ npx shadcn@latest add toast
 
 Browse all components at [ui.shadcn.com](https://ui.shadcn.com/docs/components).
 
+## Commit Convention
+
+This project enforces [Conventional Commits](https://www.conventionalcommits.org/) via a GitHub Actions workflow that runs on every push to any branch. All commit messages must follow the format:
+
+```
+<type>: <description>
+
+[optional body]
+
+[optional footer]
+```
+
+**Allowed types:** `feat`, `fix`, `chore`, `docs`, `style`, `refactor`, `test`, `ci`, `perf`, `build`, `revert`
+
+**Examples:**
+```
+feat: add user profile page
+fix: resolve login redirect loop
+docs: update API usage examples
+chore: upgrade dependencies
+```
+
+The linting is powered by [commitlint](https://commitlint.js.org/) with the `@commitlint/config-conventional` ruleset. Configuration is in `commitlint.config.js`.
+
 ## Deployment
 
 This project is designed to deploy on Vercel:
