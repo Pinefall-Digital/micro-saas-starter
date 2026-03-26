@@ -138,11 +138,15 @@ chore: upgrade dependencies
 
 The linting is powered by [commitlint](https://commitlint.js.org/) with the `@commitlint/config-conventional` ruleset. Configuration is in `commitlint.config.js`.
 
-## Pre-commit Hook
+## Git Hooks
 
-A [Husky](https://typicode.github.io/husky/) pre-commit hook runs [lint-staged](https://github.com/lint-staged/lint-staged) before every commit. It lints all staged `.ts`, `.tsx`, `.js`, and `.jsx` files with ESLint and rejects the commit if any errors or warnings are found.
+[Husky](https://typicode.github.io/husky/) manages two local git hooks that run automatically on every commit:
 
-Hooks are installed automatically when you run `npm install` (via the `prepare` script). To skip the hook in rare cases, use `git commit --no-verify`, but this is discouraged.
+1. **`pre-commit`** — Runs [lint-staged](https://github.com/lint-staged/lint-staged), which lints all staged `.ts`, `.tsx`, `.js`, and `.jsx` files with ESLint. The commit is rejected if any errors or warnings are found.
+
+2. **`commit-msg`** — Runs [commitlint](https://commitlint.js.org/) to validate that the commit message follows the [Conventional Commits](https://www.conventionalcommits.org/) format (see [Commit Convention](#commit-convention) above). The commit is rejected if the message is invalid.
+
+Hooks are installed automatically when you run `npm install` (via the `prepare` script). To skip hooks in rare cases, use `git commit --no-verify`, but this is discouraged.
 
 ## Deployment
 
