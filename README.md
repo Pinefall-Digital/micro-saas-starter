@@ -116,7 +116,7 @@ Browse all components at [ui.shadcn.com](https://ui.shadcn.com/docs/components).
 
 ## Commit Convention
 
-This project enforces [Conventional Commits](https://www.conventionalcommits.org/) via a GitHub Actions workflow that runs on every push to any branch. All commit messages must follow the format:
+This project enforces [Conventional Commits](https://www.conventionalcommits.org/) via a GitHub Actions workflow that runs on pull requests to `main`. All commit messages must follow the format:
 
 ```
 <type>: <description>
@@ -137,6 +137,12 @@ chore: upgrade dependencies
 ```
 
 The linting is powered by [commitlint](https://commitlint.js.org/) with the `@commitlint/config-conventional` ruleset. Configuration is in `commitlint.config.js`.
+
+## Pre-commit Hook
+
+A [Husky](https://typicode.github.io/husky/) pre-commit hook runs [lint-staged](https://github.com/lint-staged/lint-staged) before every commit. It lints all staged `.ts`, `.tsx`, `.js`, and `.jsx` files with ESLint and rejects the commit if any errors or warnings are found.
+
+Hooks are installed automatically when you run `npm install` (via the `prepare` script). To skip the hook in rare cases, use `git commit --no-verify`, but this is discouraged.
 
 ## Deployment
 
